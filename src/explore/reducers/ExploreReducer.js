@@ -3,7 +3,7 @@ import {
  FETCH_ITEMS_SUCCESS,
  FETCH_ITEMS_FAILURE,
  FETCH_ADD_ITEMS
-} from '../../actions/types';
+} from '../actions/types';
 
 const INITIAL_STATE = {
  isFetching: false,
@@ -15,7 +15,10 @@ export default (state = INITIAL_STATE, action) => {
 
  switch(action.type) {
   case FETCH_ITEMS: 
-   return { ...state, isFetching = true};
+   return { 
+    ...state, 
+    isFetching: true
+   };
 
   case FETCH_ITEMS_SUCCESS:
    return {

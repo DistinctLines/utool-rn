@@ -5,12 +5,12 @@ import {
   FETCH_ADD_ITEMS
 } from './types';
 
-import { fetchItems } from '../api';
+import { fetchItems } from '../../api/index';
 
-export const fetchItemsSuccess = (id, payload) => {
+export const fetchItemsSuccess = (payload) => {
+  console.log('FETCH ITEMS SUCCESS!!');
  return {
   type: FETCH_ITEMS_SUCCESS,
-  id,
   payload
  };
 }
@@ -35,13 +35,19 @@ export const fetchItemsFailure = () => {
   };
 }
 
-export const fetchItems = item => {
+export const fetchRandomItems = () => {
+
+  console.log('calling fetch method!');
+
   return dispatch => {
     dispatch(fetchItemRequest());
     return fetchItems()
       .then(items => { 
         console.log(items); 
-        dispatch(fetchItemsSuccess(item, items));
-      }).catch(() => dispatch(fetchItemsFailure()));
+        dispatch(fetchItemsSuccess(items));
+      }).catch((err) => {
+        console.log(err);
+        dispatch(fetchItemsFailure()) 
+      });
   }
 }
