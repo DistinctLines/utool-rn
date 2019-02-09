@@ -1,36 +1,59 @@
 import React, { Component } from 'react';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
+import { 
+  View, 
+  FlatList, 
+  StyleSheet, 
+  Text, 
+  ListView, 
+  ListItem 
+} from 'react-native';
+
+import { ExploreListItem } from './ExploreListItem'
 
 class ExploreList extends Component {
 
  constructor(props){
   super(props);
 
-  this.state = {};
+  this.state = {
+    items: []
+  };
 
  }
 
- componentDidMount() {
-  this.props.fetchRandomItems();
- }
+  componentDidMount() {
+    this.props.fetchRandomItems();
+  }
 
- componentWillMount() {
-
- }
+  componentWillMount() {
+  }
 
  render(){
 
   console.log('ITEMS');
   console.log(this.props.items);
 
+  var i1 = this.props.items[0];
+
   return(
-   <View>
+    // <Text>Hello world</Text>
     <FlatList
-     data={this.props.items} 
-     renderItem={(data) => <View><Text>{data.title}</Text></View>}/>
-   </View>
+      style={styles.flatList}
+      data={this.props.items}
+      renderItem={({item}) => (
+        <ExploreListItem data={item} />
+      )}
+      keyExtractor={(item, index) => index.toString()} />
   );
  }
 }
+
+const styles = StyleSheet.create({
+  flatList: {
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20
+  }
+});
 
 export default ExploreList;

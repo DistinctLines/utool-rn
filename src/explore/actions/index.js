@@ -43,8 +43,8 @@ export const fetchRandomItems = () => {
     dispatch(fetchItemRequest());
     return fetchItems()
       .then(items => { 
-        console.log(items); 
-        dispatch(fetchItemsSuccess(items));
+        console.log(items);
+        dispatch(fetchItemsSuccess(items.data));
       }).catch((err) => {
         console.log(err);
         dispatch(fetchItemsFailure()) 
