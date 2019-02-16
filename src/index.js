@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import ExploreContainer from './explore/containers/ExploreContainer';
+import AppContainer from './nav/BottomTabNavigator';
 
 import { Button, Text, View } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 export default class App extends Component {
 
@@ -17,7 +17,7 @@ export default class App extends Component {
  render() {
   return (
     <Provider store={store}>
-      <ExploreContainer />
+      <AppContainer />
     </Provider>
   );
  }

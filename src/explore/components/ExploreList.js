@@ -33,10 +33,11 @@ class ExploreList extends Component {
   console.log('ITEMS');
   console.log(this.props.items);
 
-  var i1 = this.props.items[0];
+  // var i1 = this.props.items[0];
 
   return(
-    // <Text>Hello world</Text>
+    <View>
+    <Text>Hello world</Text>
     <FlatList
       style={styles.flatList}
       data={this.props.items}
@@ -44,6 +45,7 @@ class ExploreList extends Component {
         <ExploreListItem data={item} />
       )}
       keyExtractor={(item, index) => index.toString()} />
+      </View>
   );
  }
 }
